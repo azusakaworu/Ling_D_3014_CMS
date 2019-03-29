@@ -43,10 +43,10 @@
         <label for="img">img Image:</label>
         <input type="file" name="img" id="img" value=""><br><br>
 
-        <label for="name">Movie name:</label>
+        <label for="name">Products name:</label>
         <input type="text" name="name" id="name" value=""><br><br>
 
-        <label for="price">Movie price:</label>
+        <label for="price">Products price:</label>
         <input type="text" name="price" id="price" value=""><br><br>
 
        
@@ -54,12 +54,12 @@
       
 
 
-        <label for="desc">Movie description:</label>
+        <label for="desc">Products description:</label>
         <textarea name="desc" id="desc"></textarea><br><br>
 
-        <label for="cateList">Movie Genre:</label>
+        <label for="cateList">Products Genre:</label>
         <select name="cateList" id="cateList">
-            <option>Please select a movie genre..</option>
+            <option>Please select a Products genre..</option>
 
             <?php while($product_category = $product_categories->fetch(PDO::FETCH_ASSOC)): ?>
             <!--  the value of the value attribute is what will be sent to the server when a form is submitted -->
@@ -70,7 +70,7 @@
 
         </select><br><br>
 
-        <button type="submit" name="submit">Add Movie</button>
+        <button type="submit" name="submit">Add Products</button>
     </form>
 </body>
 </html>

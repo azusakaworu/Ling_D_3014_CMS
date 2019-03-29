@@ -24,9 +24,7 @@ if (isset($_GET['id'])) {
     redirect_to('admin_editProduct.php');
 }
 
-// isset 和 ！empty 的区别
 
-//$found_product_set= $found_product_set.toString();
 
 if (isset($_POST['submit'])) {
     $id       = $_POST['pid'];

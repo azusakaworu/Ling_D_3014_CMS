@@ -17,7 +17,8 @@ if(isset($_GET['filter'])){
 <html>
 <head>
 	<meta charset='utf-8'>
-	<title>Movie Reviews</title>
+	<link rel="stylesheet" href="css/main.css">
+	<title>Sport Check</title>
 
 </head>
 <body>

@@ -1,0 +1,16 @@
+body{margin: 0;padding: 0;}
+
+
+
+ul a {text-decoration:none;color: white;}
+ul li{list-style: none;display:inline;margin-right: 30px;padding-top:20px;}
+/* a:link {color:black;}
+a:visited{color: pink} */
+a:hover{color: gray;}
+nav{float: right}
+header,footer{background-color: #262526}
+footer{height: 100px;}
+footer p {color: white;text-align: center;padding-top: 50px}
+
+
+

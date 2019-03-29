@@ -37,7 +37,7 @@ function addProduct($name, $img, $desc, $price, $cateList) {
         );
 
         if (!$addProduct_set) {
-            throw new Exception('field to insert the new movie');
+            throw new Exception('field to insert the new product');
         }
 
         $last_id = $pdo->lastInsertId();
@@ -58,7 +58,7 @@ function addProduct($name, $img, $desc, $price, $cateList) {
         }
         redirect_to('index.php');
     } catch (PDOException $exception) {
-        echo 'add movie Error:' . $exception->getMessage();
+        echo 'add product Error:' . $exception->getMessage();
         exit();
     }
 }
@@ -75,7 +75,7 @@ function deleteProduct($id) {
     );
 
     if (!$delete_products_set) {
-        throw new Exception('field to delet the  movie');
+        throw new Exception('field to delet the  product');
     }
 
     $delete_cateid_query = 'DELETE FROM tbl_prod_cate
@@ -152,11 +152,11 @@ function editProduct($id, $name, $img, $desc, $price, $cateList) {
 
 function selectEdit($id) {
     include 'connect.php';
-    $query_movie_id = 'SELECT * FROM tbl_products WHERE products_id = ' . $id;
+    $query_product_id = 'SELECT * FROM tbl_products WHERE products_id = ' . $id;
 
-    $run_movie_id = $pdo->query($query_movie_id);
-    if ($run_movie_id) {
-        return $run_movie_id;
+    $run_product_id = $pdo->query($query_product_id);
+    if ($run_product_id) {
+        return $run_product_id;
     } else {
         $error = 'There was a problem';
         return $error;

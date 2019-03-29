@@ -13,11 +13,12 @@ if(isset($_GET['id'])){
 <html>
 <head>
 	<meta charset='utf-8'>
-	<title>Movie Reviews</title>
+	<link rel="stylesheet" href="css/main.css">
+	<title>Sport Check</title>
 </head>
 <body>
 	<?php include('templates/header.html'); ?>
-	<h1>This is the movie site</h1>
+	<h1>Sport Check</h1>
 	<div>
 	<?php while($row = $results->fetch(PDO::FETCH_ASSOC)):?>
 	<img src="images/<?php echo $row['products_img'];?>" 

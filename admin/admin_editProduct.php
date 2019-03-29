@@ -6,15 +6,15 @@ confirm_logged_in();
 $tbl1   = 'tbl_products';
 $products = getAll($tbl1);
 
-$value           = "products_id";
-$tbl             = 'tbl_products';
-$col             = 'products_id';
-$found_movie_set = getSingle($tbl, $col, $value);
+// $value           = "products_id";
+// $tbl             = 'tbl_products';
+// $col             = 'products_id';
+// $found_product_set = getSingle($tbl, $col, $value);
 
-// if(is_string($found_movie_set)){
-//     $message = 'Failed to get movie info!';
+// if(is_string($found_product_set)){
+//     $message = 'Failed to get product info!';
 // }
-// isset 和 ！empty 的区别
+
 
 ?>
 
