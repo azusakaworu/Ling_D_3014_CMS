@@ -23,17 +23,17 @@
     <table>
         <thead>
             <tr>
-                <th>Movie ID</th>
-                <th>Movie Title</th>
+                <th>Product ID</th>
+                <th>Product Title</th>
                 <th>Detele</th>
             </tr>
         </thead>
         <tbody>
-            <?php while($movie = $products->fetch(PDO::FETCH_ASSOC)):?>
+            <?php while($product = $products->fetch(PDO::FETCH_ASSOC)):?>
             <tr>
-                <td><?php echo $movie['products_id'];?></td>
-                <td><?php echo $movie['products_name'];?></td>
-                <td><a href="scripts/caller.php?caller_id=deleteMovie&id=<?php echo $movie['products_id']; ?>">Delete</a></td>
+                <td><?php echo $product['products_id'];?></td>
+                <td><?php echo $product['products_name'];?></td>
+                <td><a href="scripts/caller.php?caller_id=deleteProduct&id=<?php echo $product['products_id']; ?>">Delete</a></td>
             </tr>
             <?php endwhile; ?>
         </tbody>

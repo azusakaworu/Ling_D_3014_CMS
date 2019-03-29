@@ -11,13 +11,13 @@
 
 
 //种类多选条获取数据
-$gen_tbl          = 'tbl_genre';
-$movie_categories = getAll($gen_tbl);
+$cate_tbl          = 'tbl_categories';
+$product_categories = getAll($cate_tbl);
 
-// $id  = "movies_id";
+
 
 $id = $_GET['id'];
-//
+
 if(isset($_GET['id'])){
    $found_movie_set = selectEdit($id);
 }else{
@@ -34,25 +34,19 @@ if(is_string($found_movie_set)){
 //$found_movie_set= $found_movie_set.toString();
 
 if (isset($_POST['submit'])) {
-
-    $cover = $_FILES['cover'];
-//type="file" ?
-    $title   = $_POST['title'];
-    $year    = $_POST['year'];
-    $run     = $_POST['run'];
-    $trailer = $_POST['trailer'];
-    $release = $_POST['release'];
-    $story   = $_POST['story'];
-    $genList = $_POST['genList'];
+    $img = $_FILES['img'];
+    $name = $_POST['name'];
+    $desc = $_POST['desc'];
+    $price = $_POST['price'];
+    $cateList = $_POST['cateList'];
 
     //Validation empty检查 变量存在 值是非空 非0 返回false （其他情况返回true
-    if (empty($id) || empty($cover) || empty($title) || empty($year) || empty($run) ||
-        empty($trailer) || empty($release) || empty($story)|| empty($genList)
+    if (empty($id) || empty($img) || empty($name) || empty($desc) || empty($price) ||empty($cateList)
     ) {
         $message = 'Please fill the required fields0-0...';
     } else { //返回false 执行这里
         //Do the edit
-        $result  = editMovies($id, $cover, $title, $year, $run, $trailer, $release, $story,$genList);
+        $result  = editProduct($id, $name, $img, $desc, $price,$cateList);
         $message = $result;
     }
 }
@@ -83,43 +77,37 @@ if(isset($_GET['id'])){
 
 <!-- PDO::query() returns a PDOStatement object, or FALSE on failure. -->
 	<?php while ($found_movie = $found_movie_set->fetch(PDO::FETCH_ASSOC)): ?>
-		<form action="movie_edit_details.php?id=<?php echo $found_movie['movies_id'];?>" method="post"  enctype="multipart/form-data">
-        <label for="cover">Cover Image:</label>
-        <input type="file" name="cover" id="cover" value="<?php echo $found_movie['movies_cover']; ?>"><br><br>
+		<form action="movie_edit_details.php?id=<?php echo $found_movie['products_id'];?>" method="post"  enctype="multipart/form-data">
+        <label for="img"> Image:</label>
+        <input type="file" name="img" id="img" value="<?php echo $found_movie['products_img']; ?>"><br><br>
 
-        <label for="title">Movie Title:</label>
-        <input type="text" name="title" id="title" value="<?php echo $found_movie['movies_title']; ?>"><br><br>
+        <label for="name">Movie Title:</label>
+        <input type="text" name="name" id="name" value="<?php echo $found_movie['products_name']; ?>"><br><br>
 
-        <label for="year">Movie Year:</label>
-        <input type="text" name="year" id="year" value="<?php echo $found_movie['movies_year']; ?>"><br><br>
+        <label for="price">Movie Year:</label>
+        <input type="text" name="price" id="price" value="<?php echo $found_movie['products_price']; ?>"><br><br>
 
-        <label for="run">Movie Runtime:</label>
-        <input type="text" name="run" id="run" value="<?php echo $found_movie['movies_runtime']; ?>"><br><br>
 
-        <label for="trailer">Movie Trailer:</label>
-        <input type="text" name="trailer" id="trailer" value="<?php echo $found_movie['movies_trailer']; ?>"><br><br>
-
-        <label for="release">Movie Release:</label>
-        <input type="text" name="release" id="release" value="<?php echo $found_movie['movies_release']; ?>"><br><br>
+       
 
 <!-- textarea no value 怎么显示原有的文字 -->
-        <label for="story">Movie Storyline:</label>
-        <textarea name="story" id="story"></textarea><br><br>
+        <label for="desc">Products Description</label>
+        <textarea name="desc" id="desc"></textarea><br><br>
 
-        <label for="genlist">Movie Genre:</label>
-        <select name="genList" id="genlist">
+        <label for="cateList">Movie Genre:</label>
+        <select name="cateList" id="cateList">
             <option>Please select a movie genre..</option>
 
-            <?php while ($movie_category = $movie_categories->fetch(PDO::FETCH_ASSOC)): ?>
+            <?php while ($product_category = $product_categories->fetch(PDO::FETCH_ASSOC)): ?>
             <!--  the value of the value attribute is what will be sent to the server when a form is submitted -->
-            <option value="<?php echo $movie_category['genre_id']; ?>">
-               <?php echo $movie_category['genre_name']; ?>
+            <option value="<?php echo $product_category['cate_id']; ?>">
+               <?php echo $product_category['cate_name']; ?>
             </option>
             <?php endwhile;?>
 
         </select><br><br>
 
-        <button type="submit" name="submit">Change Movie</button>
+        <button type="submit" name="submit">Change</button>
 		</form>
 	<?php endwhile;?>
 </body>

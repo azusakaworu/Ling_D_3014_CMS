@@ -14,25 +14,12 @@
 				deleteUser($id);
 				break;
 
-				case 'deleteMovie':
+				case 'deleteProduct':
 				$id = $_GET['id'];
-				deleteMovie($id);
+				deleteProduct($id);
 				break;
 
-				// case 'selectEdit':
-				// $id = $_GET['id'];
-				// selectEdit($id);
-				// //editMovies($id,$cover,$title,$year,$run,$trailer,$release,$story);
-				// break;
-
 				
-				// case 'selectEdit':
-				// $tbl = $_GET['tbl'];
-				// $col = $_GET['col'];
-				// $value = $_GET['value'];
-
-				// getSingle($tbl, $col, $value);
-				// break;
 
 
 				

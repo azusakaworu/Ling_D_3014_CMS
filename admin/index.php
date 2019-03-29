@@ -22,9 +22,9 @@
 		</ul>
 
 		<ul>
-			<li><a href="admin_addmovie.php">Add Movie</a></li>
-			<li><a href="admin_editmovie.php">Edit Movie</a></li>
-			<li><a href="admin_deletemovie.php">Delete Movie</a></li>
+			<li><a href="admin_addProduct.php">Add Products</a></li>
+			<li><a href="admin_editProduct.php">Edit Products</a></li>
+			<li><a href="admin_deleteProduct.php">Delete Products</a></li>
 		</ul>
 	</nav>
 </body>

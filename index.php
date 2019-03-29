@@ -23,7 +23,7 @@ if(isset($_GET['filter'])){
 <body>
 	
 	<!-- <h1 class="hide">Sport Check</h1> -->
-	<img src="images/logo.png" alt="">
+	
 <?php include('templates/header.html'); ?>
 
 
