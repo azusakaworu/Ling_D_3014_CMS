@@ -1,13 +1,12 @@
 <?php
-function addProduct($name, $img, $desc, $price,$cateList)
-{
+function addProduct($name, $img, $desc, $price, $cateList) {
     // check first one and last one...WHY?
     //    var_dump($img);
     //    var_dump($cateList);
     try {
         include 'connect.php';
         $file_type      = pathinfo($img['name'], PATHINFO_EXTENSION);
-        $accepted_types = array('jpg', 'png', 'gif', 'jpeg','webp');
+        $accepted_types = array('jpg', 'png', 'gif', 'jpeg', 'webp');
         if (!in_array($file_type, $accepted_types)) {
             throw new Exception('wrong file type');
         }
@@ -30,12 +29,10 @@ function addProduct($name, $img, $desc, $price,$cateList)
 
         $addProduct_set->execute(
             array(
-                ':img'     => $img['name'],
-                ':name'     => $name,
-                ':price'      => $price,
-                ':desc'   => $desc
-             
-
+                ':img'   => $img['name'],
+                ':name'  => $name,
+                ':price' => $price,
+                ':desc'  => $desc,
             )
         );
 
@@ -51,7 +48,7 @@ function addProduct($name, $img, $desc, $price,$cateList)
         $add_cateList_set->execute(
             array(
                 ':products_id' => $last_id,
-                ':cate_id'  => $cateList,
+                ':cate_id'     => $cateList,
 
             )
         );
@@ -66,8 +63,7 @@ function addProduct($name, $img, $desc, $price,$cateList)
     }
 }
 
-function deleteProduct($id)
-{
+function deleteProduct($id) {
     include 'connect.php';
 
     $delete_products_query = 'DELETE FROM tbl_products WHERE products_id = :id';
@@ -82,16 +78,16 @@ function deleteProduct($id)
         throw new Exception('field to delet the  movie');
     }
 
-    $delete_genid_query = 'DELETE FROM tbl_prod_cate
+    $delete_cateid_query = 'DELETE FROM tbl_prod_cate
         WHERE products_id = :id';
-    $delete_genid_set = $pdo->prepare($delete_genid_query);
-    $delete_genid_set->execute(
+    $delete_cateid_set = $pdo->prepare($delete_cateid_query);
+    $delete_cateid_set->execute(
         array(
             ':id' => $id,
         )
     );
 
-    if ($delete_genid_set) {
+    if ($delete_cateid_set) {
         redirect_to('../index.php');
     } else {
         $message = 'Not deleted yet..';
@@ -99,8 +95,7 @@ function deleteProduct($id)
     }
 }
 
-function editProduct($id, $name, $img, $desc, $price,$cateList)
-{
+function editProduct($id, $name, $img, $desc, $price, $cateList) {
     include 'connect.php';
 
     $update_products_query = 'UPDATE tbl_products
@@ -108,23 +103,22 @@ function editProduct($id, $name, $img, $desc, $price,$cateList)
                                 products_name=:name,
                                 products_price=:price,
                                 products_desc=:desc
-                               
-                              
+
+
                             WHERE products_id = :id';
 
     $update_products_set = $pdo->prepare($update_products_query);
     $update_products_set->execute(
         array(
-            ':img'   => $img['name'],
-            ':name'   => $name,
-            ':price'    => $price,
-            ':desc'     => $desc,
+            ':img'     => $img['name'],
+            ':name'    => $name,
+            ':price'   => $price,
+            ':desc'    => $desc,
             ':trailer' => $trailer,
             ':id'      => $id,
         )
     );
 
-    
     $update_gen_query = 'UPDATE tbl_prod_cate
                          SET cate_id= :cate_id,
                             products_id= :id
@@ -133,7 +127,7 @@ function editProduct($id, $name, $img, $desc, $price,$cateList)
     $update_gen_set = $pdo->prepare($update_gen_query);
     $update_gen_set->execute(
         array(':id' => $id,
-              ':cate_id' => $cateList,
+            ':cate_id'  => $cateList,
         )
     );
 
@@ -147,8 +141,7 @@ function editProduct($id, $name, $img, $desc, $price,$cateList)
     }
 }
 
-function selectEdit($id)
-{
+function selectEdit($id) {
     include 'connect.php';
     $query_movie_id = 'SELECT * FROM tbl_products WHERE products_id = ' . $id;
 
@@ -160,3 +153,7 @@ function selectEdit($id)
         return $error;
     }
 }
+
+
+
+

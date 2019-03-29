@@ -1,5 +1,6 @@
 <?php 
 	require_once('config.php');
+	protect_delet();
 
 	if(isset($_GET['caller_id'])){
 		$action = $_GET['caller_id'];
