@@ -5,6 +5,8 @@ if(isset($_GET['id'])){
 	$value = $_GET['id'];
 	$results = getSingle($tbl, $col, $value);
 }else{
+	echo 'Missing product ID';
+    exit;
 	
 }
 ?>
