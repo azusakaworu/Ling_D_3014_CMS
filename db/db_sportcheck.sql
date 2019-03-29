@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 27, 2019 at 11:18 PM
+-- Generation Time: Mar 29, 2019 at 07:46 PM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
   `products_desc` text NOT NULL,
   `products_price` float NOT NULL,
   PRIMARY KEY (`products_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_products`
@@ -78,7 +78,7 @@ INSERT INTO `tbl_products` (`products_id`, `products_name`, `products_img`, `pro
 (7, 'GoPro HERO7 Silver Edition Action Camera', 'camera2.webp', 'Meet the New GoPro HERO 7 Silver, the perfect camera for adventures big and small. It’s built tough and totally waterproof—just grab it and go for it. Smooth 4K video and vibrant WDR photos make every moment look amazing. GPS lets you track how fast, high and far you went. With an intuitive touch screen, it’s simple to jump right in and get great shots. Plus, your photos and videos move right to the GoPro app for easy sharing. From beach days, bike rides, ski vacays to good times with the family—capture your life in a fresh new way with GoPro HERO 7 Silver edition.', 399.99),
 (8, 'GoPro HERO7 Black Edition Action Camera', 'camera3.webp', 'Freakishly smooth footage. Smart-capture superpowers. Battle-tested and waterproof without a housing. This is HERO 7 Black, the most advanced GoPro ever. With HyperSmooth stabilization, you’ll get gimbal-like video—without the gimbal. A new intelligent photo mode delivers the best, most brilliant images automatically. And now with live streaming and the GoPro app, you can share every amazing moment as you live it. HERO 7 Black takes GoPro performance—and your photos and videos—to a whole new level.', 529.99),
 (9, 'GoPro Fusion Action Camera', 'camera4.jpg', 'The GoPro Fusion Action Camera captures spherical video and photos, recording everything so you can find the best shots later. Play it back in VR or use OverCapture to create traditional videos and photos you can share right on your phone. With ultra smooth stabilization and 5.2K video, the Fusion is like having a professional film crew with you wherever you go. ', 799.99),
-(10, 'GoPro HERO6 Black HD Action Camera', 'camera5.jpg', 'The GoPro HERO6 Black action camera transforms your adventures into incredible QuikStories right on your phone. With its all-new GP1 chip, next-level video stabilization and 2x the performance, looking good has never been so easy. Add voice control and a durable waterproof design, and the HERO6 Black is the ultimate GoPro for sharing life as you live it. Image quality has improved with a greater dynamic range, richer colours and improved ability to handle low-light conditions. ', 459.99),
+(10, 'GoPro HERO6 Black HD Action Camera', 'camera5.webp', 'The GoPro HERO6 Black action camera transforms your adventures into incredible QuikStories right on your phone. With its all-new GP1 chip, next-level video stabilization and 2x the performance, looking good has never been so easy. Add voice control and a durable waterproof design, and the HERO6 Black is the ultimate GoPro for sharing life as you live it. Image quality has improved with a greater dynamic range, richer colours and improved ability to handle low-light conditions. ', 459.99),
 (11, 'Heely\'s Kids\' GR8 Shoes - Print Grey Camo', 'skate1.webp', 'Heelys are about exploring your freedom, unleashing the fun and empowering you to be fearless. This single wheel design has in mind the older child for starting out on their first pair of Heelys or graduating up from the 2 wheel beginner model.', 99.99),
 (12, 'Heely\'s Kids\' Motion Plus Skate Shoes - Black/Royal/Red', 'skate2.jpg', 'Heelys are about exploring your freedom, unleashing the fun and empowering you to be fearless. This single wheel design has in mind the older child for starting out on their first pair of Heelys or graduating up from the 2 wheel beginner model.', 84.97),
 (13, 'Heely\'s Kids\' Vopel Grade School Shoes - Navy/Bright Yellow', 'skate3.jpg', 'Heelys are about exploring your freedom, unleashing the fun and empowering you to be fearless. This single wheel design has in mind the older child for starting out on their first pair of Heelys or graduating up from the 2 wheel beginner model.', 99.99),
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `tbl_prod_cate` (
   `products_id` int(11) NOT NULL,
   `cate_id` int(11) NOT NULL,
   PRIMARY KEY (`prod_cate_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_prod_cate`
@@ -176,14 +176,15 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `user_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_ip` varchar(50) NOT NULL DEFAULT 'no',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user_email`, `user_date`, `user_ip`) VALUES
-(1, 'ling', 'ling', '123', '123@12.com', '2019-03-15 01:57:00', '::1');
+(1, '000', 'ling', '123', '123@12.com', '2019-03-15 01:57:00', '::1'),
+(2, 'Ling', '1', '333', 'azusakaworu@gmail.com', '2019-03-28 15:38:06', 'no');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
