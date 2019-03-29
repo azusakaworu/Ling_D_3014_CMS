@@ -22,25 +22,25 @@ $found_movie_set = getSingle($tbl, $col, $value);
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Edit Movie</title>
+	<title>Edit product</title>
 </head>
 <body>
-	<h2>Edit Movie</h2>
+	<h2>Edit product</h2>
     <table>
         <thead>
             <tr>
-                <th>Movie ID</th>
-                <th>Movie Title</th>
+                <th>product ID</th>
+                <th>product Title</th>
                 <th>Select</th>
             </tr>
         </thead>
         <tbody>
-            <?php while ($movie = $products->fetch(PDO::FETCH_ASSOC)): ?>
+            <?php while ($product = $products->fetch(PDO::FETCH_ASSOC)): ?>
             <tr>
-                <td><?php echo $movie['products_id']; ?></td>
-                <td><?php echo $movie['products_name']; ?></td>
-                <!-- 选择以后如何蹦到对应的ID movie form  -->
-                <td><a href="movie_edit_details.php?id=<?php echo $movie['products_id']; ?>">Select</a></td>
+                <td><?php echo $product['products_id']; ?></td>
+                <td><?php echo $product['products_name']; ?></td>
+                <!-- 选择以后如何蹦到对应的ID product form  -->
+                <td><a href="product_edit_details.php?id=<?php echo $product['products_id']; ?>">Select</a></td>
             </tr>
             <?php endwhile;?>
         </tbody>

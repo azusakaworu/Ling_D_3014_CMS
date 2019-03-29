@@ -114,25 +114,32 @@ function editProduct($id, $name, $img, $desc, $price, $cateList) {
             ':name'    => $name,
             ':price'   => $price,
             ':desc'    => $desc,
-            ':trailer' => $trailer,
             ':id'      => $id,
         )
     );
+    //delete original 
+    $delete_old_cate_query = 'DELETE FROM tbl_prod_cate
+    WHERE products_id = :id';
+    $delete_old_cate_set = $pdo->prepare($delete_old_cate_query);
+    $delete_old_cate_set->execute(
+        array(
+            ':id' => $id,
+        )
+    );
 
-    $update_gen_query = 'UPDATE tbl_prod_cate
-                         SET cate_id= :cate_id,
-                            products_id= :id
-                         WHERE mov_cate_id=...';
+    //add new 
+    $add_cate_query = 'INSERT INTO tbl_prod_cate(products_id,cate_id )
+    VALUES(:id,:cate_id )';
 
-    $update_gen_set = $pdo->prepare($update_gen_query);
-    $update_gen_set->execute(
+    $add_cate_set = $pdo->prepare($add_cate_query);
+    $add_cate_set->execute(
         array(':id' => $id,
             ':cate_id'  => $cateList,
         )
     );
 
-    //When update successfully, redirect gen to index.php
-    if ($update_gen_set->rowCount()) {
+    //When add successfully, redirect gen to index.php
+    if ($add_cate_set->rowCount()) {
         redirect_to('index.php');
     } else {
         //otherwise, return an error message
@@ -140,6 +147,8 @@ function editProduct($id, $name, $img, $desc, $price, $cateList) {
         return $message;
     }
 }
+
+
 
 function selectEdit($id) {
     include 'connect.php';
@@ -153,7 +162,3 @@ function selectEdit($id) {
         return $error;
     }
 }
-
-
-
-

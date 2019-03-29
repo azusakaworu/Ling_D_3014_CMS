@@ -19,19 +19,19 @@ $product_categories = getAll($cate_tbl);
 $id = $_GET['id'];
 
 if(isset($_GET['id'])){
-   $found_movie_set = selectEdit($id);
+   $found_product_set = selectEdit($id);
 }else{
-    redirect_to('admin_editmovie.php');
+    redirect_to('admin_editProduct.php');
 }
 
 
-if(is_string($found_movie_set)){
-    $message = 'Failed to get movie info!';
+if(is_string($found_product_set)){
+    $message = 'Failed to get product info!';
 
 }
 // isset 和 ！empty 的区别
 
-//$found_movie_set= $found_movie_set.toString();
+//$found_product_set= $found_product_set.toString();
 
 if (isset($_POST['submit'])) {
     $img = $_FILES['img'];
@@ -52,9 +52,9 @@ if (isset($_POST['submit'])) {
 }
 
 if(isset($_GET['id'])){
-    $found_movie_set = selectEdit($id);
+    $found_product_set = selectEdit($id);
  }else{
-     redirect_to('admin_editmovie.php');
+     redirect_to('admin_editProduct.php');
  }
 
 ?>
@@ -64,10 +64,10 @@ if(isset($_GET['id'])){
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Edit Movie</title>
+	<title>Edit Product</title>
 </head>
 <body>
-	<h2>Edit Movie</h2>
+	<h2>Edit Product</h2>
 
 
 
@@ -76,27 +76,29 @@ if(isset($_GET['id'])){
 	<?php endif;?>
 
 <!-- PDO::query() returns a PDOStatement object, or FALSE on failure. -->
-	<?php while ($found_movie = $found_movie_set->fetch(PDO::FETCH_ASSOC)): ?>
-		<form action="movie_edit_details.php?id=<?php echo $found_movie['products_id'];?>" method="post"  enctype="multipart/form-data">
+	<?php while ($found_product = $found_product_set->fetch(PDO::FETCH_ASSOC)): ?>
+		<form action="product_edit_details.php?id=<?php echo $found_product['products_id'];?>" method="post"  enctype="multipart/form-data">
         <label for="img"> Image:</label>
-        <input type="file" name="img" id="img" value="<?php echo $found_movie['products_img']; ?>"><br><br>
+        <input type="file" name="img" id="img" value="<?php echo $found_product['products_img']; ?>"><br><br>
 
-        <label for="name">Movie Title:</label>
-        <input type="text" name="name" id="name" value="<?php echo $found_movie['products_name']; ?>"><br><br>
+        <label for="name">product Title:</label>
+        <input type="text" name="name" id="name" value="<?php echo $found_product['products_name']; ?>"><br><br>
 
-        <label for="price">Movie Year:</label>
-        <input type="text" name="price" id="price" value="<?php echo $found_movie['products_price']; ?>"><br><br>
+        <label for="price">product Year:</label>
+        <input type="text" name="price" id="price" value="<?php echo $found_product['products_price']; ?>"><br><br>
 
 
        
 
 <!-- textarea no value 怎么显示原有的文字 -->
         <label for="desc">Products Description</label>
-        <textarea name="desc" id="desc"></textarea><br><br>
+        <textarea name="desc" id="desc">
+        <?php echo $found_product['products_desc']; ?>
+        </textarea><br><br>
 
-        <label for="cateList">Movie Genre:</label>
+        <label for="cateList">product Genre:</label>
         <select name="cateList" id="cateList">
-            <option>Please select a movie genre..</option>
+            <option>Please select a product genre..</option>
 
             <?php while ($product_category = $product_categories->fetch(PDO::FETCH_ASSOC)): ?>
             <!--  the value of the value attribute is what will be sent to the server when a form is submitted -->
