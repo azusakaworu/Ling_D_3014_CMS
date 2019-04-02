@@ -1,16 +1,40 @@
 body{margin: 0;padding: 0;}
 
-
-
+img{width:280px;padding-top: 10px;}
+ul{margin-top: 60px;margin-right: 20px}
 ul a {text-decoration:none;color: white;}
-ul li{list-style: none;display:inline;margin-right: 30px;padding-top:20px;}
+ul li{list-style: none;display:inline;margin-right: 30px;border-top:30px;}
 /* a:link {color:black;}
 a:visited{color: pink} */
 a:hover{color: gray;}
 nav{float: right}
 header,footer{background-color: #262526}
-footer{height: 100px;}
+footer{height: 100px;clear: both;}
 footer p {color: white;text-align: center;padding-top: 50px}
 
 
 
+  .productImg ,.productImgLast {
+    background-color: #f1f1f1;
+    width: 300px;
+    height:470px;
+    margin: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+
+
+
+.productImg 
+{
+	float:left;
+	width:300px;
+	margin-right:150px;
+}
+
+.productImgLast
+{
+	float:left;
+	width:300px;
+}
