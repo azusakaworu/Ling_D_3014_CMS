@@ -35,6 +35,7 @@ if (isset($_GET['filter'])) {
 $count = 1;
 while ($row = $results->fetch(PDO::FETCH_ASSOC)):
 ?>
+<!--三元条件： 被3整除 t:last f:前两个 count自增 循环35遍 判断35次-->
 	<section class="<?php echo $count % 3 === 0 ? 'productImgLast' : 'productImg'; ?> ">
 
             <img src="images/<?php echo $row['products_img']; ?>"
