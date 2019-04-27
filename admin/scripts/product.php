@@ -63,6 +63,9 @@ function addProduct($name, $img, $desc, $price, $cateList) {
     }
 }
 
+
+
+
 function deleteProduct($id) {
     include 'connect.php';
 
@@ -94,6 +97,9 @@ function deleteProduct($id) {
         return $message;
     }
 }
+
+
+
 
 function editProduct($id, $name, $img, $desc, $price, $cateList) {
     include 'connect.php';
