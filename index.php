@@ -30,12 +30,10 @@ if (isset($_GET['filter'])) {
 
 
 
-<div>
+<section>
 
 
 <?php while ($row = $results->fetch(PDO::FETCH_ASSOC)):?>
-
-
      <img src="images/<?php echo $row['products_img']; ?>"
      alt="<?php echo $row['products_name']; ?>">
      
@@ -46,7 +44,8 @@ if (isset($_GET['filter'])) {
      
 
 <?php endwhile;?>
-</div>
+
+</section>
 
 
 

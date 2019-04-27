@@ -63,9 +63,6 @@ function addProduct($name, $img, $desc, $price, $cateList) {
     }
 }
 
-
-
-
 function deleteProduct($id) {
     include 'connect.php';
 
@@ -98,9 +95,6 @@ function deleteProduct($id) {
     }
 }
 
-
-
-
 function editProduct($id, $name, $img, $desc, $price, $cateList) {
     include 'connect.php';
 
@@ -116,14 +110,20 @@ function editProduct($id, $name, $img, $desc, $price, $cateList) {
     $update_products_set = $pdo->prepare($update_products_query);
     $update_products_set->execute(
         array(
-            ':img'     => $img['name'],
-            ':name'    => $name,
-            ':price'   => $price,
-            ':desc'    => $desc,
-            ':id'      => $id,
+            ':img'   => $img['name'],
+            ':name'  => $name,
+            ':price' => $price,
+            ':desc'  => $desc,
+            ':id'    => $id,
         )
     );
-    //delete original 
+
+    $file_type      = pathinfo($img['name'], PATHINFO_EXTENSION);
+    $accepted_types = array('jpg', 'png', 'gif', 'jpeg', 'webp');
+    $target_path    = '../images/' . $img['name'];
+    $th_copy        = '../images/TH_' . $img['name'];
+
+    //delete original
     $delete_old_cate_query = 'DELETE FROM tbl_prod_cate
     WHERE products_id = :id';
     $delete_old_cate_set = $pdo->prepare($delete_old_cate_query);
@@ -133,7 +133,7 @@ function editProduct($id, $name, $img, $desc, $price, $cateList) {
         )
     );
 
-    //add new 
+    //add new
     $add_cate_query = 'INSERT INTO tbl_prod_cate(products_id,cate_id )
     VALUES(:id,:cate_id )';
 
@@ -153,8 +153,6 @@ function editProduct($id, $name, $img, $desc, $price, $cateList) {
         return $message;
     }
 }
-
-
 
 function selectEdit($id) {
     include 'connect.php';
