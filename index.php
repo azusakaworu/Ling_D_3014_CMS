@@ -30,21 +30,24 @@ if (isset($_GET['filter'])) {
 
 
 
-<section>
+<section id="productImages">
+<?php
 
+while ($row = $results->fetch(PDO::FETCH_ASSOC)):
+$count = 1;  
+?>
+<!--三元条件： 被3整除 t:last f:前两个 count自增 循环35遍 判断35次-->
+	<section class="<?php echo $count % 3 === 0 ? 'productImgLast' : 'productImg'; ?> ">
 
-<?php while ($row = $results->fetch(PDO::FETCH_ASSOC)):?>
-     <img src="images/<?php echo $row['products_img']; ?>"
-     alt="<?php echo $row['products_name']; ?>">
-     
-     <a href="details.php?id=<?php echo $row['products_id']; ?>">Read More</a>
-     
+            <img src="images/<?php echo $row['products_img']; ?>"
+	 alt="<?php echo $row['products_name']; ?>">
+	 <a href="details.php?id=<?php echo $row['products_id']; ?>">Read More</a>
 	 <h2><?php echo $row['products_name']; ?></h2>
-     <p>Price: $<?php echo $row['products_price']; ?></p>
-     
-
-<?php endwhile;?>
-
+	 <p>Price: $<?php echo $row['products_price']; ?></p>
+     </section>
+<?php
+$count++;
+endwhile;?>
 </section>
 
 
